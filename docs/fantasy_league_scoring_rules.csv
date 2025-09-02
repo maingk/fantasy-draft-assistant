@@ -1,0 +1,47 @@
+﻿Category,Statistic,Points
+Offense,Passing Yards,1 point for each 50 yards; 2 bonus points upon reaching 300 yards
+Offense,Passing Touchdowns,6
+Offense,Interceptions,-2
+Offense,Rushing Yards,1 point for each 15 yards; 1 bonus point upon reaching 100 yards
+Offense,Rushing Touchdowns,6
+Offense,Receptions,0.5
+Offense,Receiving Yards,1 point for each 15 yards; 1 bonus point upon reaching 100 yards
+Offense,Receiving Touchdowns,6
+Offense,Return Touchdowns,6
+Offense,2-Point Conversions,2
+Offense,Fumbles Lost,-2
+Offense,Fumble Return Touchdown,6
+Offense,Pick Sixes Thrown,-2
+Kicking,FG  0-39  YDS,3
+Kicking,FG  40-49  YDS,4
+Kicking,FG 50+ YDS,5
+Kicking,Missed FG 0-19 YDS,-3
+Kicking,Missed FG 20-29 YDS,-2
+Kicking,Missed FG 30-39 YDS,-1
+Kicking,PAT  Made,1
+Defense/Special Teams,Sack,2
+Defense/Special Teams,Interception,2
+Defense/Special Teams,Fumble Recovery,2
+Defense/Special Teams,Defensive Touchdown,6
+Defense/Special Teams,Special Teams Touchdown,6
+Defense/Special Teams,Safety,2
+Defense/Special Teams,Blocked Kick,2
+Defense/Special Teams,Kickoff or Punt Return Touchdown,6
+Defense/Special Teams,Points Allowed: 0 Points,10
+Defense/Special Teams,Points Allowed: 1-6 Points,7
+Defense/Special Teams,Points Allowed: 7-13 Points,4
+Defense/Special Teams,Points Allowed: 14-20 Points,1
+Defense/Special Teams,Points Allowed: 21-27 Points,0
+Defense/Special Teams,Points Allowed: 28-34 Points,-1
+Defense/Special Teams,Points Allowed: 35+ Points,-4
+Defense/Special Teams,Extra Point Returned,2
+Individual Defensive Player,Solo Tackle,1
+Individual Defensive Player,Tackle Assist,0.5
+Individual Defensive Player,Sack,3
+Individual Defensive Player,Interception,3.5
+Individual Defensive Player,Forced Fumble,1
+Individual Defensive Player,Fumble Recovery,1
+Individual Defensive Player,Defensive Touchdown,6
+Individual Defensive Player,Safety,2
+Individual Defensive Player,Blocked Kick,2
+Individual Defensive Player,Extra Point Returned,2

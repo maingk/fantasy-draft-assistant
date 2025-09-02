@@ -1,0 +1,190 @@
+RK,TIERS,PLAYER NAME,TEAM,POS,BYE WEEK
+1,1,Zaire Franklin,IND,LB1,11
+2,1,Roquan Smith,BAL,LB2,7
+3,1,Zack Baun,PHI,LB3,9
+4,2,Fred Warner,SF,LB4,14
+5,2,Myles Garrett,CLE,DE1,9
+6,2,Maxx Crosby,LV,DE2,8
+7,2,Foyesade Oluokun,JAC,LB5,8
+8,2,T.J. Edwards,CHI,LB6,5
+9,2,Aidan Hutchinson,DET,DE3,8
+10,3,Ernest Jones IV,SEA,LB7,8
+11,3,Jamien Sherwood,NYJ,LB8,9
+12,3,Terrel Bernard,BUF,LB9,7
+13,3,Alex Singleton,DEN,LB10,12
+14,3,Budda Baker,ARI,S1,8
+15,3,Robert Spillane,NE,LB11,14
+16,4,Nick Bosa,SF,DE4,14
+17,4,Brian Branch,DET,S2,8
+18,4,Blake Cashman,MIN,LB12,6
+19,4,Logan Wilson,CIN,LB13,10
+20,4,Kyle Hamilton,BAL,S3,7
+21,4,T.J. Watt,PIT,LB14,5
+22,4,Derwin James Jr.,LAC,S4,12
+23,4,Bobby Wagner,WAS,LB15,12
+24,4,Kaden Elliss,ATL,LB16,5
+25,4,Jordyn Brooks,MIA,LB17,12
+26,4,Daiyan Henley,LAC,LB18,12
+27,5,Antoine Winfield Jr.,TB,S5,9
+28,5,Edgerrin Cooper,GB,LB19,5
+29,5,Lavonte David,TB,LB20,9
+30,5,Micah Parsons,DAL,LB21,10
+31,5,Jessie Bates III,ATL,S6,5
+32,5,Azeez Al-Shaair,HOU,LB22,6
+33,5,Will Anderson Jr.,HOU,DE5,6
+34,5,Julian Love,SEA,S7,8
+35,5,Quay Walker,GB,LB23,5
+36,5,Jack Campbell,DET,LB24,8
+37,6,Nick Bolton,KC,LB25,10
+38,6,Jaquan Brisker,CHI,S8,5
+39,6,Frankie Luvu,WAS,LB26,12
+40,6,Travis Hunter,JAC,CB1,8
+41,6,Bobby Okereke,NYG,LB27,14
+42,6,Tyler Nubin,NYG,S9,14
+43,6,Joshua Metellus,MIN,S10,6
+44,6,Grant Delpit,CLE,S11,9
+45,6,Jeremy Chinn,LV,S12,8
+46,6,Quincy Williams,NYJ,LB28,9
+47,6,Carson Schwesinger,CLE,LB29,9
+48,6,Kevin Byard III,CHI,S13,5
+49,6,DeShon Elliott,PIT,S14,5
+50,6,Brandon Jones,DEN,S15,12
+51,6,Xavier McKinney,GB,S16,5
+52,7,Patrick Queen,PIT,LB30,5
+53,7,Danielle Hunter,HOU,DE6,6
+54,7,Trey Hendrickson,CIN,DE7,10
+55,7,Brian Burns,NYG,DE8,14
+56,7,Demario Davis,NO,LB31,11
+57,7,Jared Verse,LAR,DE9,8
+58,7,Jonathan Greenard,MIN,DE10,6
+59,7,Tyrel Dodson,MIA,LB32,12
+60,7,Reed Blankenship,PHI,S17,9
+61,7,Nick Cross,IND,S18,11
+62,7,Devon Witherspoon,SEA,CB2,8
+63,7,Devin Lloyd,JAC,LB33,8
+64,7,Josh Hines-Allen,JAC,DE11,8
+65,7,Cody Barton,TEN,LB34,10
+66,8,Kyle Dugger,NE,S19,14
+67,8,Germaine Pratt,LV,LB35,8
+68,8,Greg Rousseau,BUF,DE12,7
+69,8,Alex Highsmith,PIT,LB36,5
+70,8,Andrew Van Ginkel,MIN,LB37,6
+71,8,Minkah Fitzpatrick,MIA,S20,12
+72,8,Cam Bynum,IND,S21,11
+73,8,Tremaine Edmunds,CHI,LB38,5
+74,8,Travon Walker,JAC,DE13,8
+75,8,Jordan Battle,CIN,S22,10
+76,8,Jalen Pitre,HOU,S23,6
+77,8,Nik Bonitto,DEN,DE14,12
+78,8,Kenneth Murray Jr.,DAL,LB39,10
+79,8,Jalen Thompson,ARI,S24,8
+80,8,Quentin Lake,LAR,S25,8
+81,8,Harold Landry III,NE,LB40,14
+82,8,Nate Landman,LAR,LB41,8
+83,8,Alex Anzalone,DET,LB42,8
+84,8,DeForest Buckner,IND,DT1,11
+85,8,Christian Rozeboom,CAR,LB43,14
+86,8,Jack Sanborn,DAL,LB44,10
+87,8,Jeffery Simmons,TEN,DT2,10
+88,8,Jordan Hicks,FA,LB45,-
+89,9,Jaylon Carlies,IND,LB46,11
+90,9,Dre Greenlaw,DEN,LB47,12
+91,9,Tre'von Moehrig,CAR,S26,14
+92,9,Zach Allen,DEN,DE15,12
+93,9,Josh Sweat,ARI,DE16,8
+94,9,C.J. Mosley,FA,LB48,-
+95,9,E.J. Speed,HOU,LB49,6
+96,9,Demetrius Knight Jr.,CIN,LB50,10
+97,9,Harrison Smith,MIN,S27,6
+98,9,Laiatu Latu,IND,DE17,11
+99,9,Talanoa Hufanga,DEN,S28,12
+100,9,Mack Wilson Sr.,ARI,LB51,8
+101,9,Jonathon Cooper,DEN,DE18,12
+102,9,Jevon Holland,NYG,S29,14
+103,9,Jeremiah Owusu-Koramoah,CLE,LB52,9
+104,9,Zach Sieler,MIA,DT3,12
+105,9,Tyrice Knight,SEA,LB53,8
+106,9,C.J. Gardner-Johnson,HOU,S30,6
+107,10,Elandon Roberts,LV,LB54,8
+108,10,Tuli Tuipulotu,LAC,DE19,12
+109,10,Micah McFadden,NYG,LB55,14
+110,10,Yaya Diaby,TB,DE20,9
+111,10,Kerby Joseph,DET,S31,8
+112,10,Carl Granderson,NO,DE21,11
+113,10,Donovan Wilson,DAL,S32,10
+114,10,Khalil Mack,LAC,LB56,12
+115,10,Jihaad Campbell,PHI,LB57,9
+116,10,Josey Jewell,FA,LB58,-
+117,10,Matt Milano,BUF,LB59,7
+118,10,Leonard Williams,SEA,DT4,8
+119,10,Byron Young,LAR,DE22,8
+120,10,Justin Reid,NO,S33,11
+121,10,Kobie Turner,LAR,DT5,8
+122,10,Ivan Pace Jr.,MIN,LB60,6
+123,10,Paulson Adebo,NYG,CB3,14
+124,10,Kenny Moore II,IND,CB4,11
+125,10,Nolan Smith Jr.,PHI,DE23,9
+126,10,Abdul Carter,NYG,DT6,14
+127,10,Jaden Hicks,KC,S34,10
+128,10,Will Harris,WAS,S35,12
+129,10,Dexter Lawrence II,NYG,DT7,14
+130,10,Trevin Wallace,CAR,LB61,14
+131,10,Kyler Gordon,CHI,CB5,5
+132,10,Divine Deablo,ATL,LB62,5
+133,10,Kam Curl,LAR,S36,8
+134,10,Amani Hooker,TEN,S37,10
+135,10,Payton Wilson,PIT,LB63,5
+136,10,Dee Winters,SF,LB64,14
+137,10,Quinnen Williams,NYJ,DT8,9
+138,10,Chris Jones,KC,DT9,10
+139,11,George Karlaftis III,KC,DE24,10
+140,11,Jermaine Johnson II,NYJ,DE25,9
+141,11,Taron Johnson,BUF,CB6,7
+142,11,Cameron Heyward,PIT,DT10,5
+143,11,Pete Werner,NO,LB65,11
+144,11,Mike Sainristil,WAS,CB7,12
+145,11,Alontae Taylor,NO,CB8,11
+146,11,Tykee Smith,TB,S38,9
+147,11,Jerome Baker,CLE,LB66,9
+148,11,Nate Hobbs,GB,CB9,5
+149,11,Jalen Carter,PHI,DT11,9
+150,11,Derrick Brown,CAR,DT12,14
+151,11,Chop Robinson,MIA,DE26,12
+152,11,Drue Tranquill,KC,LB67,10
+153,11,Malaki Starks,BAL,S39,7
+154,11,Cooper DeJean,PHI,CB10,9
+155,11,Xavier Woods,TEN,S40,10
+156,11,Julian Blackmon,NO,S41,11
+157,11,Jabrill Peppers,NE,S42,14
+158,11,Will McDonald IV,NYJ,DE27,9
+159,11,Kyle Van Noy,BAL,LB68,7
+160,11,Rayshawn Jenkins,CLE,S43,9
+161,11,Jalon Walker,ATL,LB69,5
+162,11,Cole Bishop,BUF,S44,7
+163,11,Montez Sweat,CHI,DE28,5
+164,11,Byron Murphy Jr.,MIN,CB11,6
+165,11,Rashan Gary,GB,LB70,5
+166,12,Kayvon Thibodeaux,NYG,DE29,14
+167,12,Bradley Chubb,MIA,LB71,12
+168,12,Deommodore Lenoir,SF,CB12,14
+169,12,DaRon Bland,DAL,CB13,10
+170,12,Omar Speights,LAR,LB72,8
+171,12,Tony Adams,NYJ,S45,9
+172,12,Javon Bullard,GB,S46,5
+173,12,Henry To'oTo'o,HOU,LB73,6
+174,12,Akeem Davis-Gaither,ARI,LB74,8
+175,12,Nnamdi Madubuike,BAL,DT13,7
+176,12,Christian Harris,HOU,LB75,6
+177,12,Calijah Kancey,TB,DT14,9
+178,12,Riley Moss,DEN,CB14,12
+179,12,Troy Andersen,ATL,LB76,5
+180,12,James Williams Sr.,TEN,S47,10
+181,12,Odafe Oweh,BAL,DE30,7
+182,12,Boye Mafe,SEA,DE31,8
+183,12,Trenton Simpson,BAL,LB77,7
+184,12,Nick Emmanwori,SEA,S48,8
+185,13,Donovan Ezeiruaku,DAL,DT15,10
+186,13,Keion White,NE,DE32,14
+187,13,Joey Bosa,BUF,DE33,7
+188,13,Junior Colson,LAC,LB78,12
+189,13,Kwity Paye,IND,DE34,11
