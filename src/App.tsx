@@ -3,7 +3,11 @@ import { playerDatabase } from './lib/playerDatabase'
 import { Player, Position } from './types'
 import { createScoringEngine, ScoringEngine } from './lib/scoringEngine'
 import { useUserPreferencesStore } from './stores/userPreferencesStore'
+import { useDraftStore } from './stores/draftStore'
 import { PlayerNotesModal } from './components/PlayerNotesModal'
+import { DraftSetup } from './components/DraftSetup'
+import { QuickDraftSetup } from './components/QuickDraftSetup'
+import { DraftRoom } from './components/DraftRoom'
 
 interface AppState {
   isLoading: boolean
@@ -22,6 +26,8 @@ interface RankingsFilter {
   showTargetsOnly: boolean
   hideAvoidPlayers: boolean
 }
+
+type AppView = 'rankings' | 'draft-setup' | 'quick-setup' | 'draft-room'
 
 function App() {
   const [state, setState] = useState<AppState>({
@@ -45,6 +51,7 @@ function App() {
   const [showLeagueConfig, setShowLeagueConfig] = useState(false)
   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null)
   const [showPlayerNotes, setShowPlayerNotes] = useState(false)
+  const [currentView, setCurrentView] = useState<AppView>('rankings')
   
   // User preferences store
   const {
@@ -54,6 +61,9 @@ function App() {
     getCustomRanking,
     getPlayerNote
   } = useUserPreferencesStore()
+
+  // Draft store
+  const { settings: draftStoreSettings } = useDraftStore()
 
   useEffect(() => {
     loadPlayerData()
@@ -285,6 +295,29 @@ function App() {
     )
   }
 
+  // Route to different views
+  if (currentView === 'draft-setup') {
+    return (
+      <DraftSetup 
+        onStartDraft={() => setCurrentView('draft-room')}
+        onQuickSetup={() => setCurrentView('quick-setup')}
+      />
+    )
+  }
+
+  if (currentView === 'quick-setup') {
+    return (
+      <QuickDraftSetup 
+        onStartDraft={() => setCurrentView('draft-room')}
+        onBackToFull={() => setCurrentView('draft-setup')}
+      />
+    )
+  }
+
+  if (currentView === 'draft-room') {
+    return <DraftRoom onBackToRankings={() => setCurrentView('rankings')} />
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-8">
@@ -379,6 +412,18 @@ function App() {
                     className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition-colors"
                   >
                     League Settings
+                  </button>
+                  <button
+                    onClick={() => setCurrentView('draft-setup')}
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition-colors font-medium"
+                  >
+                    🚀 Start Draft
+                  </button>
+                  <button
+                    onClick={() => setCurrentView('quick-setup')}
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white px-4 py-2 rounded transition-colors font-medium"
+                  >
+                    ⚡ Quick Setup
                   </button>
                   <button
                     onClick={async () => {

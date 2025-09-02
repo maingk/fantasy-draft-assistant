@@ -173,28 +173,141 @@ export const useDraftStore = create<DraftStore>()(
           const userTeam = state.teams[state.settings.userTeamIndex]
           const recommendations: PlayerRecommendation[] = []
 
-          // Simple recommendation logic (to be enhanced later)
-          const topPlayers = state.availablePlayers
-            .filter(p => 'vorp' in p)
-            .sort((a, b) => {
-              const aVorp = 'vorp' in a ? a.vorp : 0
-              const bVorp = 'vorp' in b ? b.vorp : 0
-              return bVorp - aVorp
-            })
-            .slice(0, 5)
+          // Get user preferences functions (we'll access the store state directly)
+          const userPreferencesStore = (window as any).userPreferencesStore
+          if (!userPreferencesStore) {
+            // Fallback to simple logic if preferences not available
+            const topPlayers = state.availablePlayers
+              .filter(p => 'vorp' in p || 'fps' in p)
+              .sort((a, b) => {
+                const aValue = 'vorp' in a ? (a as any).vorp : ('fps' in a ? (a as any).fps : 0)
+                const bValue = 'vorp' in b ? (b as any).vorp : ('fps' in b ? (b as any).fps : 0)
+                return bValue - aValue
+              })
+              .slice(0, 8)
 
-          topPlayers.forEach(player => {
-            const positionCount = userTeam.roster.filter(p => p.position === player.position).length
-            const maxPositionCount = state.settings!.rosterPositions[player.position] || 0
-            
-            recommendations.push({
-              player,
-              reason: 'vorp' in player ? `High VORP (${player.vorp.toFixed(1)})` : 'Top available',
-              value: 'vorp' in player ? player.vorp : 0,
-              reach: false,
-              positionalNeed: positionCount < maxPositionCount ? 'high' : 'low',
+            topPlayers.forEach(player => {
+              const positionCount = userTeam.roster.filter(p => p.position === player.position).length
+              const maxPositionCount = state.settings!.rosterPositions[player.position] || 0
+              
+              recommendations.push({
+                player,
+                reason: 'vorp' in player ? `High VORP (${(player as any).vorp.toFixed(1)})` : 'Top available',
+                value: 'vorp' in player ? (player as any).vorp : ('fps' in player ? (player as any).fps : 0),
+                reach: false,
+                positionalNeed: positionCount < maxPositionCount ? 'high' : 'low',
+              })
             })
-          })
+          } else {
+            // Enhanced logic with user preferences
+            const userPrefs = userPreferencesStore.getState()
+            
+            // Calculate adjusted values and positional needs for all available players
+            const rankedPlayers = state.availablePlayers
+              .map(player => {
+                const baseValue = 'vorp' in player ? (player as any).vorp : ('fps' in player ? (player as any).fps : 0)
+                const adjustedValue = userPrefs.calculateAdjustedValue(player, baseValue)
+                const customRanking = userPrefs.getCustomRanking(player.id)
+                const isTarget = userPrefs.isPlayerTarget(player.id)
+                const isAvoid = userPrefs.isPlayerAvoid(player.id)
+                const playerNote = userPrefs.getPlayerNote(player.id)
+                
+                // Calculate positional need
+                const positionCount = userTeam.roster.filter(p => p.position === player.position).length
+                const maxPositionCount = state.settings!.rosterPositions[player.position] || 0
+                const flexCount = userTeam.roster.filter(p => ['RB', 'WR', 'TE'].includes(p.position)).length
+                const maxFlexCount = (state.settings!.rosterPositions['RB'] || 0) + 
+                                   (state.settings!.rosterPositions['WR'] || 0) + 
+                                   (state.settings!.rosterPositions['TE'] || 0) + 
+                                   (state.settings!.rosterPositions['W-R-T'] || 0)
+                
+                const isPositionFilled = positionCount >= maxPositionCount
+                const isFlexEligible = ['RB', 'WR', 'TE'].includes(player.position)
+                const canFillFlex = isFlexEligible && flexCount < maxFlexCount
+                const shouldFilter = isPositionFilled && (!isFlexEligible || !canFillFlex)
+                
+                return {
+                  player,
+                  baseValue,
+                  adjustedValue,
+                  customRanking,
+                  isTarget,
+                  isAvoid,
+                  playerNote,
+                  positionCount,
+                  maxPositionCount,
+                  isPositionFilled,
+                  shouldFilter
+                }
+              })
+              .filter(p => {
+                // Always filter avoid players
+                if (p.isAvoid) return false
+                
+                // Don't filter targets or custom ranked players even if position is filled
+                if (p.isTarget || p.customRanking) return true
+                
+                // Filter out players whose position is completely filled
+                return !p.shouldFilter
+              })
+              .sort((a, b) => {
+                // Prioritize targets and custom rankings
+                if (a.isTarget && !b.isTarget) return -1
+                if (!a.isTarget && b.isTarget) return 1
+                
+                // Boost players who fill needs
+                const aNeed = a.isPositionFilled ? 0 : 1
+                const bNeed = b.isPositionFilled ? 0 : 1
+                if (aNeed !== bNeed) return bNeed - aNeed
+                
+                // Then by adjusted value
+                return b.adjustedValue - a.adjustedValue
+              })
+              .slice(0, 8)
+
+            rankedPlayers.forEach(({ player, adjustedValue, customRanking, isTarget, playerNote, positionCount, maxPositionCount, isPositionFilled }) => {
+              let reason = ''
+              if (customRanking) {
+                reason = `Your #${customRanking} ranking`
+              } else if (isTarget) {
+                reason = `Target player (${adjustedValue.toFixed(1)} adj. value)`
+              } else if ('vorp' in player && (player as any).vorp > 0) {
+                reason = `High VORP (${(player as any).vorp.toFixed(1)})`
+              } else if ('fps' in player && (player as any).fps > 0) {
+                reason = `High FPS (${(player as any).fps.toFixed(1)})`
+              } else {
+                reason = 'Top available'
+              }
+              
+              // Add positional need context
+              const needsPosition = positionCount < maxPositionCount
+              const isFlexEligible = ['RB', 'WR', 'TE'].includes(player.position)
+              
+              if (needsPosition) {
+                reason += ` • Need ${player.position} (${positionCount}/${maxPositionCount})`
+              } else if (isFlexEligible) {
+                reason += ` • Flex eligible`
+              } else if (isPositionFilled) {
+                reason += ` • Position filled (${positionCount}/${maxPositionCount})`
+              }
+              
+              // Add note excerpt if available
+              if (playerNote?.note) {
+                const noteExcerpt = playerNote.note.length > 40 
+                  ? playerNote.note.substring(0, 40) + '...' 
+                  : playerNote.note
+                reason += ` • "${noteExcerpt}"`
+              }
+              
+              recommendations.push({
+                player,
+                reason,
+                value: adjustedValue,
+                reach: customRanking ? customRanking > state.currentPick : false,
+                positionalNeed: needsPosition ? 'high' : isFlexEligible ? 'medium' : 'low',
+              })
+            })
+          }
 
           set({ recommendations })
         },
@@ -221,9 +334,44 @@ export const useDraftStore = create<DraftStore>()(
             })
           }
 
+          // Record the pick in draft history
+          const newPick: DraftPick = {
+            pickNumber: state.currentPick,
+            teamIndex: teamIndex,
+            player: player,
+            timestamp: new Date(),
+          }
+
+          // Calculate next pick based on draft type
+          const nextPick = state.currentPick + 1
+          let nextTeamIndex = teamIndex
+
+          if (state.settings) {
+            if (state.settings.draftType === 'snake') {
+              // Snake draft logic - calculate for the NEXT pick
+              const nextRound = Math.floor((nextPick - 1) / state.settings.numberOfTeams)
+              const nextPositionInRound = (nextPick - 1) % state.settings.numberOfTeams
+              
+              if (nextRound % 2 === 0) {
+                // Even rounds (0, 2, 4...): normal order (0, 1, 2, ..., n-1)
+                nextTeamIndex = nextPositionInRound
+              } else {
+                // Odd rounds (1, 3, 5...): reverse order (n-1, n-2, ..., 1, 0)
+                nextTeamIndex = state.settings.numberOfTeams - 1 - nextPositionInRound
+              }
+            } else {
+              // Linear draft: same order every round
+              nextTeamIndex = (teamIndex + 1) % state.settings.numberOfTeams
+            }
+          }
+
           set({
             availablePlayers: updatedAvailablePlayers,
             teams: updatedTeams,
+            picks: [...state.picks, newPick],
+            currentPick: nextPick,
+            currentTeamIndex: nextTeamIndex,
+            timeRemaining: state.settings?.pickTimeLimit || 120,
           })
 
           get().generateRecommendations()

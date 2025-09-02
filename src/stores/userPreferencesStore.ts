@@ -201,3 +201,8 @@ export const useUserPreferencesStore = create<UserPreferencesStore>()(
     }
   )
 )
+
+// Expose store to window for cross-store access
+if (typeof window !== 'undefined') {
+  (window as any).userPreferencesStore = useUserPreferencesStore
+}
